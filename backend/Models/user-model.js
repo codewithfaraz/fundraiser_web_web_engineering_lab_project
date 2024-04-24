@@ -21,15 +21,6 @@ const userSchema = new mongoose.Schema({
   confirmpassword: {
     type: String,
     minlength: 8,
-    // validate: {
-    //   validator: async function (el) {
-    //     const hashedComfirmPassword = await bcrypt.hash(el, 10);
-    //     console.log(this.password);
-    //     console.log(hashedComfirmPassword);
-    //     return this.password === hashedComfirmPassword;
-    //   },
-    //   message: "Both password and confirm password must be same",
-    // },
   },
 });
 
