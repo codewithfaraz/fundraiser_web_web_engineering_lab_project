@@ -1,0 +1,49 @@
+.form__container {
+  width: 80%;
+  height: 80vh;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.left__box {
+  height: 100%;
+  background-color: #adbf69;
+}
+.right__box {
+  position: relative;
+  height: 100%;
+}
+.form {
+  width: 70%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  text-align: center;
+
+  transform: translate(-50%, -50%);
+}
+.submit__btn {
+  background: linear-gradient(135deg, #000, #737373);
+  color: white;
+  width: 30%;
+  transform: translateX(100%);
+  border-radius: 30px;
+  padding: 10px 5px;
+}
+.form__heading {
+  color: #adbf69;
+  font-family: "Sedan", serif;
+  font-weight: 500;
+  margin: 0;
+  font-size: 2.5rem;
+  width: 40%;
+  position: relative;
+  line-height: 0.8;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.login_img {
+  margin-left: -30px;
+  margin-top: 10px;
+}
