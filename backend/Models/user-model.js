@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const validator = require("validator");
+const bcrypt = require("bcryptjs");
 const userSchema = new mongoose.Schema({
   username: {
     type: String,
@@ -20,12 +21,15 @@ const userSchema = new mongoose.Schema({
   confirmpassword: {
     type: String,
     minlength: 8,
-    validate: {
-      validator: function (confirmPassword) {
-        return this.password === confirmPassword;
-      },
-      message: "Both password and confirm password must be same",
-    },
+    // validate: {
+    //   validator: async function (el) {
+    //     const hashedComfirmPassword = await bcrypt.hash(el, 10);
+    //     console.log(this.password);
+    //     console.log(hashedComfirmPassword);
+    //     return this.password === hashedComfirmPassword;
+    //   },
+    //   message: "Both password and confirm password must be same",
+    // },
   },
 });
 

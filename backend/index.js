@@ -2,6 +2,7 @@ const express = require("express");
 const bcrypt = require("bcryptjs");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const jwt = require("jsonwebtoken");
 const dotenv = require("dotenv");
 const User = require("./Models/user-model");
 dotenv.config({ path: "./config.env" });
@@ -35,6 +36,26 @@ app.post("/user/signup", async (req, res) => {
     });
   } catch (err) {
     res.status(400).json({
+      status: "fail",
+      err,
+    });
+  }
+});
+app.post("/user/login", async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    const user = await User.findOne({ email });
+
+    const passwordMatch = await bcrypt.compare(password, user.password);
+    if (user && passwordMatch) {
+      const token = jwt.sign({ user: user.email }, process.env.JWT_SECRET, {
+        expiresIn: process.env.JWT_EXPIRESIN,
+      });
+      console.log(token);
+      res.status(200).json({ status: "success", token });
+    }
+  } catch (err) {
+    res.status(500).json({
       status: "fail",
       err,
     });
