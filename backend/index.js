@@ -6,6 +6,7 @@ const jwt = require("jsonwebtoken");
 const dotenv = require("dotenv");
 const User = require("./Models/user-model");
 dotenv.config({ path: "./config.env" });
+const project = require("./Models/project-model");
 const app = express();
 //middlerwares
 app.use(cors());
@@ -54,6 +55,18 @@ app.post("/user/login", async (req, res) => {
       console.log(token);
       res.status(200).json({ status: "success", token });
     }
+  } catch (err) {
+    res.status(500).json({
+      status: "fail",
+      err,
+    });
+  }
+});
+
+app.post("/addProject", async (req, res) => {
+  try {
+    const newProject = await project.create(req.body);
+    res.status(200).json({ status: "Succes", newProject });
   } catch (err) {
     res.status(500).json({
       status: "fail",
