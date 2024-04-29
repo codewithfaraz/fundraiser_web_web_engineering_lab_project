@@ -4,17 +4,18 @@ import ReCAPTCHA from "react-google-recaptcha";
 import { Box, Grid, Stack, TextField, Typography } from "@mui/material";
 import Paper from "@mui/material/Paper";
 import classes from "./loginPage.module.css";
-
+import { router } from "next/router";
 import Link from "next/link";
 import DisplaSnackbar from "@/utils/snackbar";
-import PasswordField from "@/utils/passwordField";
 export default function Login() {
+  const route = router();
   //states
   const [emailInpt, setEmailinput] = useState("");
   const [passwordInput, setPasswordInput] = useState("");
   const [isValidEmail, setIsValidEmail] = useState(false);
   const [captcha, setCaptcha] = useState(false);
-
+  const [isOpen, setIsOpen] = useState(false);
+  const [snackBarMessage, setSnackBarMessage] = useState("Plz fill the form");
   const [forIsValid, setFormIsValid] = useState(true);
   //handlers
   const onEmailChange = (event) => {
@@ -26,9 +27,16 @@ export default function Login() {
   };
   const loginButtonHandler = (event) => {
     event.preventDefault();
-    console.log(captcha);
-    // route.push("/");
+    if (captcha && isValidEmail && passwordInput.length >= 8) {
+      setIsOpen(false);
+    } else {
+      setIsOpen(true);
+      route.push("/");
+    }
   };
+  function snackBarCloseHandler() {
+    setIsOpen(false);
+  }
   const onChange = (event) => {
     setCaptcha(true);
   };
@@ -104,7 +112,11 @@ export default function Login() {
         </Grid>
       </Paper>
 
-      <DisplaSnackbar message="User not found" />
+      <DisplaSnackbar
+        message={snackBarMessage}
+        isOpen={isOpen}
+        action={snackBarCloseHandler}
+      />
     </>
   );
 }

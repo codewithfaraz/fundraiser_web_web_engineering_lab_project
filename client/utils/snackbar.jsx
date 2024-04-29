@@ -8,11 +8,13 @@ export default function DisplaSnackbar(props) {
         size="small"
         aria-label="close"
         color="inherit"
-        // onClick={handleClose}
+        onClick={props.action}
       >
         <CloseIcon fontSize="small" />
       </IconButton>
     </React.Fragment>
   );
-  return <Snackbar message={props.message} action={action} />;
+  return (
+    <Snackbar message={props.message} action={action} open={props.isOpen} />
+  );
 }
