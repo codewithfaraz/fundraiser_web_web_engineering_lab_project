@@ -1,0 +1,29 @@
+.container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+.not_found_heading {
+  margin-bottom: 2rem;
+  color: #adbf69;
+  font-family: "Sedan", serif;
+  font-weight: 500;
+  margin: 0;
+  font-size: 4.5rem;
+  position: relative;
+  line-height: 0.8;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.home__btn {
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(135deg, #000, #737373);
+  color: white;
+  margin-top: 12rem;
+  transform: translateX(100%);
+  border-radius: 10px;
+  padding: 20px;
+}
