@@ -13,7 +13,7 @@ To deploy this project run
   2) run npm install inside the backend folder
   3) run npm install inside the client folder
   3) run npm run start in backend
-  4) run npm run start in client
+  4) run npm run dev in client
 
 ```
 
