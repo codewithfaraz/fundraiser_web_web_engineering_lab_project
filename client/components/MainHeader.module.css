@@ -1,0 +1,43 @@
+.header {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.24);
+}
+.navbar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.navbar__logo h1 a {
+  font-family: "Sedan", serif;
+  font-weight: 500;
+  font-size: 24px;
+
+  width: 60%;
+  text-align: center;
+  color: #adbf69;
+}
+.navbar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.navbar-list {
+  display: flex;
+  align-items: center;
+}
+.navbar-list__item {
+  padding-right: 16px;
+}
+.navbar-list__link {
+  color: rgba(0, 0, 0, 0.877);
+  font-weight: 700;
+}
+.navbar-list__link:hover {
+  filter: brightness(80%);
+}
+.login__btn {
+  background-color: #adbf69;
+  padding: 10px 20px;
+}
+.login__btn:hover {
+  filter: brightness(80%);
+}

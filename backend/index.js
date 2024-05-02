@@ -23,13 +23,26 @@ mongoose
   });
 app.post("/user/signup", async (req, res) => {
   try {
+    let user = await User.findOne({ email: req.body.email });
+    if (user) {
+      return res.status(400).json({
+        status: "fail",
+        message: "user already exists",
+      });
+    }
+    user = await User.findOne({ username: req.body.username });
+    if (user?.username === req.body.username) {
+      return res.status(401).json({
+        status: "fail",
+        message: "same user name already exist try different",
+      });
+    }
     const hashedPassword = await bcrypt.hash(req.body.password, 10);
     console.log(hashedPassword);
     const userToAdd = {
       ...req.body,
       password: hashedPassword,
     };
-
     const newUser = await User.create(userToAdd);
     res.status(200).json({
       status: "success",
@@ -46,20 +59,31 @@ app.post("/user/login", async (req, res) => {
   try {
     const { email, password } = req.body;
     const user = await User.findOne({ email });
+    console.log(user);
+    if (!user) {
+      // User not found
+      res.status(400).json({ status: "fail", message: "User not found" });
+      return;
+    }
 
     const passwordMatch = await bcrypt.compare(password, user.password);
-    if (user && passwordMatch) {
+    if (passwordMatch) {
+      // Password correct, generate token
       const token = jwt.sign({ user: user.email }, process.env.JWT_SECRET, {
         expiresIn: process.env.JWT_EXPIRESIN,
       });
-      console.log(token);
       res.status(200).json({ status: "success", token });
+    } else {
+      // Incorrect password
+      res.status(401).json({
+        status: "fail",
+        message: "Incorrect password",
+      });
     }
   } catch (err) {
-    res.status(500).json({
-      status: "fail",
-      err,
-    });
+    // Server error
+    console.error(err);
+    res.status(500).json({ status: "error", message: "Internal server error" });
   }
 });
 

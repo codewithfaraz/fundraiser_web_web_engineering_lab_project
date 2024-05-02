@@ -1,22 +1,23 @@
 "use client";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import ReCAPTCHA from "react-google-recaptcha";
+import { loginActions } from "@/store/store";
 import { Box, Grid, Stack, TextField, Typography } from "@mui/material";
 import Paper from "@mui/material/Paper";
 import classes from "./loginPage.module.css";
-import { router } from "next/router";
 import Link from "next/link";
+
 import DisplaSnackbar from "@/utils/snackbar";
+import { isLogedIn } from "@/lib/isLogedIn";
 export default function Login() {
-  const route = router();
+  const dispatch = useDispatch();
+  const loginState = useSelector((state) => state.login);
   //states
   const [emailInpt, setEmailinput] = useState("");
   const [passwordInput, setPasswordInput] = useState("");
   const [isValidEmail, setIsValidEmail] = useState(false);
   const [captcha, setCaptcha] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
-  const [snackBarMessage, setSnackBarMessage] = useState("Plz fill the form");
-  const [forIsValid, setFormIsValid] = useState(true);
   //handlers
   const onEmailChange = (event) => {
     setEmailinput(event.target.value);
@@ -25,24 +26,25 @@ export default function Login() {
   const onPasswordChange = (event) => {
     setPasswordInput(event.target.value);
   };
-  const loginButtonHandler = (event) => {
+  const loginButtonHandler = async (event) => {
     event.preventDefault();
-    if (captcha && isValidEmail && passwordInput.length >= 8) {
-      setIsOpen(false);
+    if (isValidEmail && passwordInput.length >= 8) {
+      const user = {
+        email: emailInpt,
+        password: passwordInput,
+      };
+      //sending request for login
+      let url = "http://127.0.0.1:8000/user/login";
+      isLogedIn(url, user, dispatch);
     } else {
-      setIsOpen(true);
-      route.push("/");
+      dispatch(loginActions.openIsOpen());
     }
   };
-  function snackBarCloseHandler() {
-    setIsOpen(false);
-  }
   const onChange = (event) => {
     setCaptcha(true);
   };
   return (
     <>
-      {/* <PasswordField /> */}
       <Paper elevation={4} className={classes.form__container}>
         <Grid
           container
@@ -113,9 +115,9 @@ export default function Login() {
       </Paper>
 
       <DisplaSnackbar
-        message={snackBarMessage}
-        isOpen={isOpen}
-        action={snackBarCloseHandler}
+        message={loginState.loginSnackbarMessage}
+        action={loginActions.closeIsOpen}
+        open={loginState.isLoginSnackBarOpen}
       />
     </>
   );

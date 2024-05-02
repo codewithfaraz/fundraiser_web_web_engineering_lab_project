@@ -1,5 +1,5 @@
 import styles from "./page.module.css";
-
+import { useSelector } from "react-redux";
 import Link from "next/link";
 
 export default function Home() {
