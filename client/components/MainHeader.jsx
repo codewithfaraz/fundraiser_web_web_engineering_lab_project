@@ -1,6 +1,9 @@
+"use client";
 import Link from "next/link";
+import { useSelector } from "react-redux";
 import classes from "./MainHeader.module.css";
 export default function MainHeader() {
+  const isUserLogedIn = useSelector((state) => state.login.isUserLogedIn);
   return (
     <header className={classes.header}>
       <nav className={classes.navbar}>
@@ -30,14 +33,18 @@ export default function MainHeader() {
               About us
             </a>
           </li>
-          <li className={`${classes["navbar-list__item"]}`}>
-            <a
-              href=""
-              className={`${classes["navbar-list__link"]} ${classes.login__btn}`}
-            >
-              Login
-            </a>
-          </li>
+          {!isUserLogedIn ? (
+            <li className={`${classes["navbar-list__item"]}`}>
+              <a
+                href=""
+                className={`${classes["navbar-list__link"]} ${classes.login__btn}`}
+              >
+                Login
+              </a>
+            </li>
+          ) : (
+            <Link href="/user-profile">Account</Link>
+          )}
         </ul>
       </nav>
     </header>

@@ -16,7 +16,9 @@ export async function isLogedIn(url, user, dispatch) {
   } else {
     dispatch(loginActions.setLoginSnackbarMessage("User Logged in"));
     dispatch(loginActions.openIsOpen());
+    dispatch(loginActions.setIsUserLoggedInToTrue());
     localStorage.setItem("token", data.token);
-    console.log(data);
+    localStorage.setItem("username", data.user.username);
+    localStorage.setItem("email", data.user.email);
   }
 }

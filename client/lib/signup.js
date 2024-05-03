@@ -1,5 +1,7 @@
 import { signupActions } from "@/store/store";
+import { useRouter } from "next/navigation";
 export async function signUp(url, user, dispatch) {
+  // const router = useRouter();
   const response = await fetch(url, {
     method: "POST",
     headers: {
@@ -24,4 +26,5 @@ export async function signUp(url, user, dispatch) {
     dispatch(signupActions.openIsOpen());
   }
   console.log(statusCode);
+  // router.push("/");
 }

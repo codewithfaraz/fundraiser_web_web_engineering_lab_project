@@ -6,6 +6,7 @@ const loginSlice = createSlice({
   initialState: {
     isLoginSnackBarOpen: false,
     loginSnackbarMessage: "Plz fill the form",
+    isUserLogedIn: false,
   },
   reducers: {
     closeIsOpen(state) {
@@ -16,6 +17,12 @@ const loginSlice = createSlice({
     },
     setLoginSnackbarMessage(state, action) {
       state.loginSnackbarMessage = action.payload;
+    },
+    setIsUserLoggedInToFalse(state) {
+      state.isUserLogedIn = false;
+    },
+    setIsUserLoggedInToTrue(state) {
+      state.isUserLogedIn = true;
     },
   },
 });

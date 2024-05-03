@@ -2,11 +2,19 @@
   background: linear-gradient(135deg, #000, #737373);
   width: 20%;
   text-align: center;
-  margin-left: 35px;
   color: white;
   display: block;
   margin-bottom: 100px;
   border: none;
   border-radius: 30px;
   padding: 10px 5px;
+}
+.form {
+  padding: 30px;
+  width: 80%;
+  margintop: 20px;
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }

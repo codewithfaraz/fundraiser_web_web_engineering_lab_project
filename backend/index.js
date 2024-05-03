@@ -1,6 +1,7 @@
 const express = require("express");
-const bcrypt = require("bcryptjs");
+const { promisify } = require("util");
 const mongoose = require("mongoose");
+const bcrypt = require("bcryptjs");
 const cors = require("cors");
 const jwt = require("jsonwebtoken");
 const dotenv = require("dotenv");
@@ -72,7 +73,7 @@ app.post("/user/login", async (req, res) => {
       const token = jwt.sign({ user: user.email }, process.env.JWT_SECRET, {
         expiresIn: process.env.JWT_EXPIRESIN,
       });
-      res.status(200).json({ status: "success", token });
+      res.status(200).json({ status: "success", token, user });
     } else {
       // Incorrect password
       res.status(401).json({
@@ -86,7 +87,26 @@ app.post("/user/login", async (req, res) => {
     res.status(500).json({ status: "error", message: "Internal server error" });
   }
 });
-
+app.get("/user/verfiyuser/:email/:token", async (req, res) => {
+  const email = req.params.email;
+  const token = req.params.token;
+  if (!email || !token) {
+    return res
+      .status(401)
+      .json({ status: "fail", message: "Plz Login in first" });
+  }
+  const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
+  const userStilExist = User.findOne(decoded.user);
+  if (!userStilExist) {
+    return res
+      .status(401)
+      .json({ status: "fail", message: "user have been deleted" });
+  }
+  res.status(200).json({
+    status: "success",
+    message: "You are exist",
+  });
+});
 app.post("/addProject", async (req, res) => {
   try {
     const newProject = await project.create(req.body);
