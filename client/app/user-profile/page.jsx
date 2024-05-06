@@ -62,7 +62,7 @@ export default function userProfile() {
         </Box>
       </div>
 
-      <Box component="main" sx={{ flexGrow: 1, p: 3, marginTop: "64px" }}>
+      <Box component="main" sx={{ flexGrow: 1 }}>
         <Toolbar />
         <Typography paragraph>{showProfile && <Profile />}</Typography>
         <Typography paragraph>{showProject && <Projects />}</Typography>
