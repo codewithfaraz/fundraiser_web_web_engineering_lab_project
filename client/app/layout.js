@@ -1,3 +1,4 @@
+import React from "react";
 import { Inter } from "next/font/google";
 import MainHeader from "@/components/MainHeader";
 import Providers from "@/store/provider";

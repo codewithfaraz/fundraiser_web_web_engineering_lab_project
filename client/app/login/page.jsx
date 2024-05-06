@@ -1,9 +1,10 @@
 "use client";
 import { useState } from "react";
+import GoogleIcon from "@mui/icons-material/Google";
 import { useDispatch, useSelector } from "react-redux";
 import ReCAPTCHA from "react-google-recaptcha";
 import { loginActions } from "@/store/store";
-import { Box, Grid, Stack, TextField, Typography } from "@mui/material";
+import { Box, Grid, Stack, TextField, Typography, Button } from "@mui/material";
 import Paper from "@mui/material/Paper";
 import classes from "./loginPage.module.css";
 import Link from "next/link";
@@ -104,7 +105,11 @@ export default function Login() {
                 >
                   Login
                 </button>
+                <Button variant="outlined" startIcon={<GoogleIcon />}>
+                  Login With Google
+                </Button>
                 <Typography variant="h6">Or</Typography>
+
                 <p>
                   <Link href="/signup">create account</Link>
                 </p>

@@ -15,14 +15,15 @@ import {
 import Link from "next/link";
 const categories = ["Tech", "Education", "Infrastructure"];
 export default function BasicSelect() {
-  const isUserLoggedIn = useSelector((state) => state.login.isUserLoggedIn);
+  const isUserLogedIn = useSelector((state) => state.login.isUserLogedIn);
+  console.log(isUserLogedIn);
   const [category, setCategory] = useState("");
   const handleChange = (event) => {
     setCategory(event.target.value);
   };
   return (
     <>
-      {!isUserLoggedIn ? (
+      {isUserLogedIn ? (
         <form className={classes.form} action={submitProject}>
           <FormControl sx={{ width: 150 }}>
             <InputLabel id="demo-simple-select-label">Category</InputLabel>

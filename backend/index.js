@@ -96,6 +96,12 @@ app.get("/user/verfiyuser/:email/:token", async (req, res) => {
       .json({ status: "fail", message: "Plz Login in first" });
   }
   const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
+  if (!decoded) {
+    return res.status(401).json({
+      status: "fail",
+      message: "Token has been expired",
+    });
+  }
   const userStilExist = User.findOne(decoded.user);
   if (!userStilExist) {
     return res
