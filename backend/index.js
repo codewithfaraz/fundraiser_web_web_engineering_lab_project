@@ -2,6 +2,7 @@ const express = require("express");
 const { promisify } = require("util");
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
+const userRoutes = require("./routes/userRoute");
 const cors = require("cors");
 const jwt = require("jsonwebtoken");
 const dotenv = require("dotenv");
@@ -22,40 +23,7 @@ mongoose
   .then((con) => {
     console.log("Database connected");
   });
-app.post("/user/signup", async (req, res) => {
-  try {
-    let user = await User.findOne({ email: req.body.email });
-    if (user) {
-      return res.status(400).json({
-        status: "fail",
-        message: "user already exists",
-      });
-    }
-    user = await User.findOne({ username: req.body.username });
-    if (user?.username === req.body.username) {
-      return res.status(401).json({
-        status: "fail",
-        message: "same user name already exist try different",
-      });
-    }
-    const hashedPassword = await bcrypt.hash(req.body.password, 10);
-    console.log(hashedPassword);
-    const userToAdd = {
-      ...req.body,
-      password: hashedPassword,
-    };
-    const newUser = await User.create(userToAdd);
-    res.status(200).json({
-      status: "success",
-      newUser,
-    });
-  } catch (err) {
-    res.status(400).json({
-      status: "fail",
-      err,
-    });
-  }
-});
+app.use("/user", userRoutes);
 app.post("/user/login", async (req, res) => {
   try {
     const { email, password } = req.body;

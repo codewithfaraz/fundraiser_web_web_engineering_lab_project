@@ -35,12 +35,12 @@ export default function MainHeader() {
           </li>
           {!isUserLogedIn ? (
             <li className={`${classes["navbar-list__item"]}`}>
-              <a
-                href=""
+              <Link
+                href="/login"
                 className={`${classes["navbar-list__link"]} ${classes.login__btn}`}
               >
                 Login
-              </a>
+              </Link>
             </li>
           ) : (
             <Link href="/user-profile">Account</Link>

@@ -1,6 +1,5 @@
 import { loginActions } from "@/store/store";
 export async function verifyUser(dispatch) {
-  ("use client");
   const email = localStorage?.getItem("email");
   const token = localStorage?.getItem("token");
   if (!email || !token) {
