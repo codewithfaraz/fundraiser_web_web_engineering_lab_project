@@ -1,6 +1,6 @@
 "use client";
 import { useDispatch } from "react-redux";
-import { verifyUser } from "@/lib/actions";
+import { verifyUser } from "@/lib/verifyUser";
 import styles from "./page.module.css";
 import Link from "next/link";
 import { Box, Typography } from "@mui/material";

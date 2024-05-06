@@ -114,7 +114,7 @@ app.get("/user/verfiyuser/:email/:token", async (req, res) => {
   });
 });
 
-app.post("/addProject", async (req, res) => {
+app.post("/addproject", async (req, res) => {
   try {
     const newProject = await project.create(req.body);
     res.status(200).json({ status: "Succes", newProject });
@@ -125,7 +125,23 @@ app.post("/addProject", async (req, res) => {
     });
   }
 });
-
+//request for getting all projects of a user
+app.get("/project/getprojects/:username", async (req, res) => {
+  try {
+    const user = req.params.username;
+    const projects = await project.find({ username: user });
+    console.log(projects);
+    res.status(200).json({
+      status: "success",
+      projects,
+    });
+  } catch (err) {
+    res.status(500).json({
+      status: "fail",
+      err,
+    });
+  }
+});
 //listening to server
 app.listen(process.env.PORT, () => {
   console.log(`server is listening on port ${process.env.PORT}`);
