@@ -3,8 +3,7 @@ import { useDispatch } from "react-redux";
 import { verifyUser } from "@/lib/actions";
 import styles from "./page.module.css";
 import Link from "next/link";
-import { Box, Grid, Typography } from "@mui/material";
-import { BackHand } from "@mui/icons-material";
+import { Box, Typography } from "@mui/material";
 export default function Home() {
   const dispatch = useDispatch();
   verifyUser(dispatch);

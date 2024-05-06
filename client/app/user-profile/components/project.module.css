@@ -1,0 +1,56 @@
+.dis {
+    padding-left: 5rem;
+    display: flex;
+    width: 30rem;
+  
+    height: max-content;
+  }
+  .pad {
+    padding: 1rem;
+  }
+  .headin {
+    margin-top: 0%;
+    text-align: center;
+  }
+  @keyframes example {
+    0% {
+      background-color: whitesmoke;
+    }
+    100% {
+      background-color: white;
+    }
+  }
+  .boxx {
+    margin-left: 5rem;
+    margin-right: 3rem;
+    animation-name: example;
+    animation-duration: 1s;
+    margin-top: 0%;
+    border: 1px solid rgb(108, 181, 25);
+    height: 500px;
+  }
+  .list__dis {
+    display: flex;
+  }
+  .submit__btn {
+    height: 1.5rem;
+    background: linear-gradient(135deg, #9bd020, #737373);
+    color: #ffffff;
+    width: 5rem;
+    transform: translateX(100%);
+    border-radius: 15px;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+  
+    margin-left: 20rem;
+    margin-top: 1%;
+  }
+  .lis {
+    margin-top: 2%;
+  }
+  .h_2 {
+    margin-left: 15rem;
+    text-decoration: underline;
+  }

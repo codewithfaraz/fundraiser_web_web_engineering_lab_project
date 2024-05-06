@@ -6,3 +6,10 @@
   background-color: #adbf69;
   width: 240px;
 }
+.img_pad {
+  text-align: center;
+}
+.textDisplay {
+  display: flex;
+  flex-direction: column;
+}

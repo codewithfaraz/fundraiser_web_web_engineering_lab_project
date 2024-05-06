@@ -1,0 +1,32 @@
+.dis {
+  padding-left: 5rem;
+  display: flex;
+  flex-direction: column;
+  width: 30rem;
+
+  height: max-content;
+}
+.pad {
+  padding: 1rem;
+}
+.headin {
+  margin-top: 0%;
+  text-align: center;
+}
+@keyframes example {
+  0% {
+    background-color: whitesmoke;
+  }
+  100% {
+    background-color: white;
+  }
+}
+.boxx {
+  margin-left: 5rem;
+  margin-right: 3rem;
+  animation-name: example;
+  animation-duration: 1s;
+  margin-top: 0%;
+  border: 1px solid rgb(108, 181, 25);
+  height: 500px;
+}

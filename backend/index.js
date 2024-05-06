@@ -113,6 +113,7 @@ app.get("/user/verfiyuser/:email/:token", async (req, res) => {
     message: "You are exist",
   });
 });
+
 app.post("/addProject", async (req, res) => {
   try {
     const newProject = await project.create(req.body);
@@ -124,6 +125,7 @@ app.post("/addProject", async (req, res) => {
     });
   }
 });
+
 //listening to server
 app.listen(process.env.PORT, () => {
   console.log(`server is listening on port ${process.env.PORT}`);

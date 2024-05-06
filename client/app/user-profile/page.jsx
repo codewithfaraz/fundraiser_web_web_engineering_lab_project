@@ -14,6 +14,11 @@ import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
 import classes from "./userProfile.module.css";
+import Avatar from "@mui/material/Avatar";
+import { useState } from "react";
+import Profile from "./components/profile";
+import Projects from "./components/projects";
+
 const drawerWidth = 280;
 
 export default function userProfile() {
