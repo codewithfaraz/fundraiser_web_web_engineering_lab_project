@@ -18,15 +18,24 @@ import classes from "./userProfile.module.css";
 import Avatar from "@mui/material/Avatar";
 import { useState } from "react";
 import Profile from "./components/profile";
+import Projects from "./components/projects";
 
 const drawerWidth = 280;
 
 export default function userProfile() {
   const [showProfile, setShowProfile] = useState(false);
 
-  const handleProfileClick = () => {
-    setShowProfile(!showProfile);
-  };
+  const [showProject, setShowProject] = useState(false);
+
+  const handleListItemClick = (text) => {
+    if (text === "Profile") {
+      setShowProfile(true);
+      setShowProject(false);
+    } else if (text === "Projects") {
+      setShowProfile(false);
+      setShowProject(true);
+    }
+  };
 
   return (
     <div className={classes.display}>
@@ -39,7 +48,7 @@ export default function userProfile() {
               <ListItem
                 key={text}
                 disablePadding
-                onClick={text === "Profile" ? handleProfileClick : undefined}
+                onClick={()=>handleListItemClick(text)}
               >
                 <ListItemButton>
                   <ListItemIcon>
@@ -56,6 +65,8 @@ export default function userProfile() {
       <Box component="main" sx={{ flexGrow: 1, p: 3, marginTop: "64px" }}>
         <Toolbar />
         <Typography paragraph>{showProfile && <Profile />}</Typography>
+        <Typography paragraph>{showProject && <Projects />}</Typography>
+
       </Box>
     </div>
   );
