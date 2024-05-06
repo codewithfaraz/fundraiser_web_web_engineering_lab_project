@@ -1,24 +1,26 @@
 import React from 'react';
 import classes from "./slider-style.module.css";
 
-
-
-
 const CustomNextArrow = (props) => {
     const { onClick } = props;
     return (
-        <button className={classes.nextButton} onClick={onClick}>
+        <div className={`${classes.customArrow} ${classes.customNext}`} onClick={onClick}>
             Next
-        </button>
+        </div>
+    );
+};
+
+const CustomPrevArrow = (props) => {
+    const { onClick } = props;
+    return (
+        <div className={`${classes.customArrow} ${classes.customPrev}`} onClick={onClick}>
+            Prev
+        </div>
     );
 };
 export default function Slider() {
     const data = [
-        {
-            name: 'Kashan Nadeem',
-            Description: 'i am kashan nadeem. Recently study in FAST University',
-            img: '/Projects Picture/img1.jpg'
-        },
+      
         {
             name: 'Dawood Ramazan',
             img: '/Projects Picture/img2.jpg',
@@ -34,20 +36,22 @@ export default function Slider() {
             img: '/Projects Picture/img4.jpg',
             Description: 'i am Hassan Zahid. Recently study in FAST University',
         },
+        {
+            name: 'Dawood Ramazan',
+            img: '/Projects Picture/img2.jpg',
+            Description: 'i am Dawood Ramazan. Recently study in FAST University',
+        },
     ];
-
     const settings = {
-        dots: false,
-        infinite: false,
+        dots: true,
+        infinite: true,
         speed: 500,
-        slidesToShow: 3, // Show three items at a time
-        slidesToScroll: 1,
-        nextArrow: <CustomNextArrow />,
-    };
+        slidesToShow: 3,
+        slidesToScroll: 3
+      };
 
     return (
         <div className={classes.slider}>
-            <h1>Image Slider</h1>
                 
             
                 {data.map((item, index) => (

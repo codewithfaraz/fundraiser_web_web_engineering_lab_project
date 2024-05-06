@@ -1,13 +1,27 @@
 /* slider-style.module.css */
 
-.slider {
-    display: flex; /* Use flexbox for layout */
-    justify-content: center; /* Center items horizontally */
-    align-items: center; /* Center items vertically */
-    flex-wrap: nowrap; /* Prevent items from wrapping to the next line */
-    overflow-x: auto; /* Allow horizontal scrolling */
-    margin-bottom: 16px; /* Add space below the slider */
+/* slider-style.module.css */
+
+.sliderContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Set the container height to full viewport height */
 }
+
+.slider {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    margin-bottom: 16px;
+    max-width: 80%;
+    padding-left: 38%;
+}
+
+/* Rest of your slider styles */
+
 
 .slider div {
     flex: 0 0 auto; /* Don't allow items to grow or shrink */
@@ -35,7 +49,7 @@
 }
 
 .slider button {
-    background-color: #007bff; /* Button background color */
+    background-color: #040405; /* Button background color */
     color: white; /* Button text color */
     border: none; /* Remove button border */
     padding: 8px 16px; /* Add padding to the button */
