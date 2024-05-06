@@ -1,0 +1,44 @@
+/* slider-style.module.css */
+
+.slider {
+    display: flex; /* Use flexbox for layout */
+    justify-content: center; /* Center items horizontally */
+    align-items: center; /* Center items vertically */
+    flex-wrap: nowrap; /* Prevent items from wrapping to the next line */
+    overflow-x: auto; /* Allow horizontal scrolling */
+    margin-bottom: 16px; /* Add space below the slider */
+}
+
+.slider div {
+    flex: 0 0 auto; /* Don't allow items to grow or shrink */
+    margin-right: 16px; /* Add space between items */
+    padding: 16px; /* Add padding around the content */
+    border-radius: 8px; /* Add rounded corners to the content area */
+    text-align: center; /* Center the content horizontally */
+    background-color: #f8f8f8; /* Background color for the content area */
+}
+
+.slider img {
+    max-width: 100%; /* Make sure images don't exceed their container */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 8px; /* Add rounded corners to the images */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow to the images */
+}
+
+.slider h3 {
+    margin-top: 0; /* Remove top margin from the heading */
+    font-size: 1.5rem; /* Set the font size for the heading */
+}
+
+.slider p {
+    margin-bottom: 8px; /* Add space below the paragraph */
+}
+
+.slider button {
+    background-color: #007bff; /* Button background color */
+    color: white; /* Button text color */
+    border: none; /* Remove button border */
+    padding: 8px 16px; /* Add padding to the button */
+    border-radius: 4px; /* Add rounded corners to the button */
+    cursor: pointer; /* Change cursor to pointer on hover */
+}
