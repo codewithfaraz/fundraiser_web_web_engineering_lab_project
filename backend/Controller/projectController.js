@@ -26,3 +26,17 @@ exports.getProject = async (req, res) => {
     });
   }
 };
+exports.getAllProjects = async (req, res) => {
+  try {
+    const allProjects = await project.find();
+    res.status(200).json({
+      status: "success",
+      allProjects,
+    });
+  } catch (err) {
+    res.status(500).json({
+      status: "fail",
+      message: "error in getAllProject function",
+    });
+  }
+};
