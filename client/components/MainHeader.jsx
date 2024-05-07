@@ -14,9 +14,9 @@ export default function MainHeader() {
         </div>
         <ul className={classes["navbar-list"]}>
           <li className={classes["navbar-list__item"]}>
-            <a href="" className={classes["navbar-list__link"]}>
+            <Link href="/investnow" className={classes["navbar-list__link"]}>
               Invest now
-            </a>
+            </Link>
           </li>
           <li className={classes["navbar-list__item"]}>
             <Link href="/add-project" className={classes["navbar-list__link"]}>

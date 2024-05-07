@@ -19,6 +19,7 @@ export default function RootLayout({ children }) {
           <MainHeader />
           {children}
         </Providers>
+        <footer>This is footer</footer>
       </body>
     </html>
   );
