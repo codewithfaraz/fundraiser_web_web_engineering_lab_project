@@ -24,12 +24,12 @@ export default function MainHeader() {
             </Link>
           </li>
           <li className={classes["navbar-list__item"]}>
-            <a href="" className={classes["navbar-list__link"]}>
+            <a href="/category" className={classes["navbar-list__link"]}>
               Category
             </a>
           </li>
           <li className={classes["navbar-list__item"]}>
-            <a href=" " className={classes["navbar-list__link"]}>
+            <a href="about-us" className={classes["navbar-list__link"]}>
               About us
             </a>
           </li>

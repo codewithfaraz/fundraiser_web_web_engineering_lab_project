@@ -2,6 +2,7 @@ import React from "react";
 import { Inter } from "next/font/google";
 import MainHeader from "@/components/MainHeader";
 import Providers from "@/store/provider";
+import Foot from "@/components/Footer";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -19,7 +20,9 @@ export default function RootLayout({ children }) {
           <MainHeader />
           {children}
         </Providers>
-        <footer>This is footer</footer>
+        <footer>
+          <Foot />
+        </footer>
       </body>
     </html>
   );
