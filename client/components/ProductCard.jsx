@@ -4,9 +4,9 @@ export default function ProductCard(props) {
     <>
       <li style={{ display: "flex", justifyContent: "center" }}>
         <div className={classes.card}>
-          <p>category</p>
-          <img src="/assets/download.png" />
-          <h3>Title</h3>
+          <p>{props.category}</p>
+          <img src={`${props.imageURL}`} />
+          <h3>{props.title}</h3>
           <button>Invest</button>
         </div>
       </li>
