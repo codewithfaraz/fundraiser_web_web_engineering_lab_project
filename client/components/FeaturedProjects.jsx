@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import ProductCard from "./ProductCard";
+import Slider from "@/components/slider";
 import classes from "./FeaturedProjects.module.css";
 const featuredprojects = [];
 export default function FeaturedProjects() {
@@ -10,9 +11,11 @@ export default function FeaturedProjects() {
       const response = await fetch(url);
       const data = await response.json();
 
-      if (data.allProjects.length >= 2) {
+      if (data.allProjects.length >= 7) {
         const newArray = data.allProjects.slice(0, 3);
         setFeatureProjectsToDisplay(newArray);
+      } else {
+        setFeatureProjectsToDisplay(data.allProjects);
       }
       data.allProjects.map((p, index) => {
         if (index >= 3) {
@@ -26,18 +29,6 @@ export default function FeaturedProjects() {
       // Perform cleanup here if necessary
     };
   }, []);
-
-  return (
-    <ul className={classes.list}>
-      {featureProjectsToDisplay.map((p) => {
-        return (
-          <ProductCard
-            title={p.title}
-            category={p.category}
-            imageURL={p.imageURL}
-          />
-        );
-      })}
-    </ul>
-  );
+  console.log(featureProjectsToDisplay);
+  return <Slider data={featureProjectsToDisplay} />;
 }

@@ -19,9 +19,11 @@ function Item(props) {
           theme.palette.mode === "dark" ? " #adbf69" : "white",
         color: (theme) =>
           theme.palette.mode === "dark" ? " #adbf69" : " #adbf69",
-        border: "1px solid",
+        border: "1px solid ",
         borderColor: (theme) =>
-          theme.palette.mode === "dark" ? "black" : "black",
+          theme.palette.mode === "dark"
+            ? "rgba(0, 0, 0, 0.342)"
+            : "rgba(0, 0, 0, 0.342)",
         borderRadius: 2,
         border: "5px solid black",
         fontSize: "0.875rem",
@@ -53,7 +55,7 @@ export default function Foot() {
           sx={{
             display: "flex",
             alignItems: "flex-start",
-            paddingLeft: "200px",
+            paddingLeft: "140px",
             m: 1,
             bgcolor: "background.paper",
             height: 100,

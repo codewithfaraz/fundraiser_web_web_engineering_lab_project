@@ -4,6 +4,7 @@ import { verifyUser } from "@/lib/verifyUser";
 import styles from "./page.module.css";
 import FeaturedProjects from "@/components/FeaturedProjects";
 import Link from "next/link";
+import Slider from "@/components/slider";
 import { Box, Typography, Grid } from "@mui/material";
 export default function Home() {
   const dispatch = useDispatch();
@@ -68,7 +69,6 @@ export default function Home() {
       <Typography variant="h5" sx={{ textAlign: "left", padding: "30px" }}>
         Featured Projects
       </Typography>
-
       <FeaturedProjects />
     </main>
   );
