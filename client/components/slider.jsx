@@ -93,7 +93,7 @@ const Slider = ({ data }) => {
         id="left"
         className="fa-solid fas fa-angle-left"
         onClick={() => arrowClicked("left")}
-      ></i>
+      >{`<`}</i>
       <ul className="carousel" id="carousel">
         {data.map((item, index) => (
           <li key={index} className="card">
@@ -112,7 +112,7 @@ const Slider = ({ data }) => {
         id="right"
         className="fa-solid fas fa-angle-right"
         onClick={() => arrowClicked("right")}
-      ></i>
+      >{`>`}</i>
     </div>
   );
 };

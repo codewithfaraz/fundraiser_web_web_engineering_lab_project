@@ -1,5 +1,5 @@
 import { loginActions } from "@/store/store";
-
+// import { redirect } from "next/navigation";
 export async function isLogedIn(url, user, dispatch) {
   const response = await fetch(url, {
     method: "POST",
@@ -20,5 +20,6 @@ export async function isLogedIn(url, user, dispatch) {
     localStorage.setItem("token", data.token);
     localStorage.setItem("username", data.user.username);
     localStorage.setItem("email", data.user.email);
+    // redirect("/");
   }
 }

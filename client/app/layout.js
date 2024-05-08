@@ -20,9 +20,9 @@ export default function RootLayout({ children }) {
           <MainHeader />
           {children}
         </Providers>
-        <footer>
+        {/* <footer>
           <Foot />
-        </footer>
+        </footer> */}
       </body>
     </html>
   );

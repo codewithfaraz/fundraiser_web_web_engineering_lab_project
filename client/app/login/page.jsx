@@ -29,7 +29,7 @@ export default function Login() {
   };
   const loginButtonHandler = async (event) => {
     event.preventDefault();
-    if (isValidEmail && passwordInput.length >= 8) {
+    if (captcha && isValidEmail && passwordInput.length >= 8) {
       const user = {
         email: emailInpt,
         password: passwordInput,
@@ -50,7 +50,11 @@ export default function Login() {
         <Grid
           container
           my={2}
-          sx={{ height: "100%", padding: "0", margin: "0" }}
+          sx={{
+            height: "100%",
+            padding: "0",
+            margin: "0",
+          }}
           spacing={1}
         >
           <Grid className={classes.left__box} xs={12} sm={6} item>

@@ -23,15 +23,11 @@ export default function MainHeader() {
               Start a project
             </Link>
           </li>
+
           <li className={classes["navbar-list__item"]}>
-            <a href="/category" className={classes["navbar-list__link"]}>
-              Category
-            </a>
-          </li>
-          <li className={classes["navbar-list__item"]}>
-            <a href="about-us" className={classes["navbar-list__link"]}>
+            <Link href="/about-us" className={classes["navbar-list__link"]}>
               About us
-            </a>
+            </Link>
           </li>
           {!isUserLogedIn ? (
             <li className={`${classes["navbar-list__item"]}`}>

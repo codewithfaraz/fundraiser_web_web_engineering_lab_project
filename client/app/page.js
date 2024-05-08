@@ -4,6 +4,7 @@ import { verifyUser } from "@/lib/verifyUser";
 import styles from "./page.module.css";
 import FeaturedProjects from "@/components/FeaturedProjects";
 import Link from "next/link";
+import Foot from "@/components/Footer";
 import Slider from "@/components/slider";
 import { Box, Typography, Grid } from "@mui/material";
 export default function Home() {
@@ -20,6 +21,7 @@ export default function Home() {
           alignItems: "center",
           fontFamily: '"Times New Roman", Times, serif',
         }}
+        className={styles.mainContent}
       >
         <h1>Invest In Dreams, Fund the Future</h1>
         <Link href="/addproject" className={styles.btn}>
@@ -69,7 +71,10 @@ export default function Home() {
       <Typography variant="h5" sx={{ textAlign: "left", padding: "30px" }}>
         Featured Projects
       </Typography>
-      <FeaturedProjects />
+      <FeaturedProjects category="all" />
+      <footer>
+        <Foot />
+      </footer>
     </main>
   );
 }

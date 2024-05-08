@@ -40,3 +40,18 @@ exports.getAllProjects = async (req, res) => {
     });
   }
 };
+exports.getAllProjectsByCategory = async (req, res) => {
+  try {
+    const c = req.params.category;
+    const allProjects = await project.find({ category: c });
+    res.status(200).json({
+      status: "success",
+      allProjects,
+    });
+  } catch (err) {
+    res.status(500).json({
+      status: "fail",
+      message: "error from gett projects by category",
+    });
+  }
+};
